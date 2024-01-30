@@ -15,7 +15,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "jquery": "^3.7.1",
-    "jsdom": "^23.0.1"
+    "jquery": "^3.7.1"
   }
 }
