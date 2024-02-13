@@ -1,11 +1,11 @@
-.App-body {
-  font-size: 1rem;
-  padding: 2em;
-  height: 45%;
-  border-bottom: 3px solid #e0354b;
-
+:root {
+    --holberton-red: #e1484c;
 }
 
-form input {
-  margin: 10px;
+.App-body {
+    padding: 36px 24px;
+}
+
+.App-body input {
+    margin: 0 16px 0 8px;
 }

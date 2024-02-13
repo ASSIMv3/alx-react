@@ -3,11 +3,14 @@
 }
 
 body {
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto;
     position: relative;
 }
 
+div {
+    padding: 2px 8px;
+}
 
 .App {
     position: relative;
