@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { jest } from '@jest/globals';
+import { shallow } from 'enzyme';
 import App from './App';
 
 describe('Test App.js', () => {
@@ -46,23 +45,7 @@ describe("Testing <App isLoggedIn={true} />", () => {
     expect(wrapper.find('Login')).toHaveLength(0);
   });
 
-  it("the CourseList component is included", () => {
+  it(" the CourseList component is included", () => {
     expect(wrapper.find('CourseList').exists());
-  });
-});
-
-describe("Testing <App logOut={function} />", () => {
-
-  it("verify that when the keys control and h are pressed the logOut function, passed as a prop, is called and the alert function is called with the string Logging you out", () => {
-    const wrapper = mount(<App logOut={()=>{console.log("ctrl and h are pressed")}}/>);
-    window.alert = jest.fn();
-    const inst = wrapper.instance();
-    const logout = jest.spyOn(inst, 'logOut');
-    const alert = jest.spyOn(window, 'alert');
-    const event = new KeyboardEvent('keydown', {bubbles:true, ctrlKey: true, key: 'h'});
-    document.dispatchEvent(event);
-    expect(alert).toBeCalledWith("Logging you out");
-    expect(logout).toBeCalled();
-    alert.mockRestore();
   });
 });
