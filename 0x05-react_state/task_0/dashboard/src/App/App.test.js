@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import { StyleSheetTestUtils } from 'aphrodite';
 import App from './App';
