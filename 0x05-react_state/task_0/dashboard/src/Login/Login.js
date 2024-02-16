@@ -1,47 +1,55 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-const Login = () => {
+function Login() {
   return (
-    <>
-      <div className={css(styles.appBody, styles.small)}>
-        <h1>Log in to continue</h1>
-        <p>Login to access the full dashboard</p>
-        <label htmlFor="email">Email: </label>
-        <input className={css(styles.noBorder)} type="email" id="email" name="email" />
-        <label htmlFor="password">Password: </label>
-        <input className={css(styles.noBorder)} type="password" id="password" name="password" />
-        <button className={css(styles.yellowBorder)}>OK</button>
-      </div>
-    </>
+    <main role='main' className={css(styles.login)}>
+      <p>Login to access the full dashboard</p>
+      <label htmlFor='email'>Email:</label>
+      <input className={css(styles.inp)} type='email' name='email' id='email' />
+      <label htmlFor='password'>Password:</label>
+      <input
+        className={css(styles.inp)}
+        type='password'
+        name='password'
+        id='password'
+      />
+      <button className={css(styles.btn)} type='button'>
+        OK
+      </button>
+    </main>
   );
 }
 
+const screenSize = {
+  small: '@media screen and (max-width: 900px)',
+};
+
 const styles = StyleSheet.create({
-  appBody: {
-    minHeight: '50vh',
-    textAlign: 'left',
-    marginTop: '2rem',
-    marginLeft: '2rem',
+  login: {
+    padding: '16px 24px',
+    [screenSize.small]: {
+      width: '90%',
+      padding: 0,
+    },
   },
-  small: {
-    '@media (max-width: 900px)': {
-      display: 'grid',
-      justifyContent: 'center',
-    }
+  inp: {
+    margin: '4px',
+    [screenSize.small]: {
+      display: 'block',
+      border: 'none',
+      margin: 0,
+    },
   },
-  noBorder: {
-    '@media (max-width: 900px)': {
-      border: 'none'
-    }
+  btn: {
+    margin: '4px',
+    cursor: 'pointer',
+    [screenSize.small]: {
+      width: '32px',
+      display: 'block',
+      margin: 0,
+    },
   },
-  yellowBorder: {
-    '@media (max-width: 900px)': {
-      border: '2px solid gold',
-      backgroundColor: 'transparent',
-      width: '5vw'
-    }
-  }
-})
+});
 
 export default Login;

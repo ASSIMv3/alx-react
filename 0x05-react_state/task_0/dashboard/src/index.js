@@ -4,7 +4,7 @@ import App from './App/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App isLoggedIn={true} />
   </React.StrictMode>,
   document.getElementById('root')
 );
