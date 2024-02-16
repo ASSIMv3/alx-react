@@ -1,31 +1,31 @@
-import React from "react";
-import { shallow } from "enzyme";
-import WithLogging from "./WithLogging";
+import React, { Component } from 'react';
+import { shallow } from 'enzyme';
+import WithLogging from './WithLogging';
 
-const TestComponent = () => <p>Test Component</p>;
+describe('<withLogging /> higher oder component', () => {
+  it('checks console.log called on mount and unmount', () => {
+    const spy = jest.spyOn(console, 'log').mockImplementation();
+    const NewComponent = WithLogging(Component);
+    const wrapper = shallow(<NewComponent />)
 
-describe("WithLogging tests", () => {
-    it("should call console.log on mount and dismount", () => {
-        const spy = jest.spyOn(console, "log").mockImplementation();
-        const NewComponent = WithLogging(TestComponent);
-        const wrapper = shallow(<NewComponent />);
+    expect(spy).toBeCalledTimes(1);
+    wrapper.unmount();
+    expect(spy).toBeCalledTimes(2);
+    spy.mockRestore();
+  })
 
-        expect(spy).toBeCalledTimes(1);
-        wrapper.unmount();
-        expect(spy).toBeCalledTimes(2);
-        spy.mockRestore();
-    });
+  it('checks console.log called on mount and unmount', () => {
+    const spy = jest.spyOn(console, 'log').mockImplementation();
+    const NewComponent = WithLogging('Login');
+    const wrapper = shallow(<NewComponent />)
 
-    it("should log out the right message on mount and on unmount", () => {
-        const spy = jest.spyOn(console, "log").mockImplementation();
-        const NewComponent = WithLogging(TestComponent);
-        const wrapper = shallow(<NewComponent />);
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(`Component Login is mounted`);
 
-        expect(spy).toBeCalledTimes(1);
-        expect(spy).toBeCalledWith("Component TestComponent is mounted");
-        wrapper.unmount();
-        expect(spy).toHaveBeenCalledTimes(2);
-        expect(spy).toBeCalledWith("Component Test is going to unmount");
-        spy.mockRestore();
-    });
-});
+    wrapper.unmount();
+    expect(spy).toBeCalledWith(`Component Login is going to unmount`);
+    expect(spy).toBeCalledTimes(2);
+
+    spy.mockRestore();
+  })
+})
