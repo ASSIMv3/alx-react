@@ -1,4 +1,4 @@
-import { Map, List } from './node_modules/immutable/dist/immutable';
+import { Map, List } from 'immutable';
 
 export function concatElements (page1, page2) {
   const list1 = List(page1);
